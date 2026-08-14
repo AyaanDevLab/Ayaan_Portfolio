@@ -8,6 +8,7 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
@@ -20,6 +21,10 @@ body {
 a {
     text-decoration: none;
     color: inherit;
+}
+
+img {
+    max-width: 100%;
 }
 
 
@@ -71,6 +76,17 @@ a {
     color: #ff6b00;
 }
 
+.nav-links a:focus-visible,
+.nav-btn:focus-visible,
+.menu-btn:focus-visible,
+.primary-btn:focus-visible,
+.secondary-btn:focus-visible,
+.project-view:focus-visible,
+.contact-btn:focus-visible {
+    outline: 2px solid #ff6b00;
+    outline-offset: 3px;
+}
+
 .nav-btn {
     padding: 12px 22px;
 
@@ -104,6 +120,20 @@ a {
     font-size: 1.2rem;
 
     cursor: pointer;
+}
+
+.menu-icon {
+    width: 20px;
+    display: grid;
+    gap: 4px;
+}
+
+.menu-icon span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    border-radius: 999px;
+    background: #000;
 }
 
 /* ================= MOBILE NAVBAR ================= */
@@ -366,6 +396,7 @@ a {
 
 .code-body p {
     color: #ddd;
+    overflow-wrap: anywhere;
 }
 
 .indent {
@@ -386,7 +417,7 @@ a {
 
 .comment {
     margin-top: 15px;
-    color: #555 !important;
+    color: #555;
 }
 
 
@@ -444,12 +475,6 @@ a {
 
    
 
-    .menu-btn {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
     .hero {
         grid-template-columns: 1fr;
 
@@ -496,6 +521,10 @@ a {
 
     .navbar {
         height: 70px;
+    }
+
+    .nav-links {
+        top: 70px;
     }
 
     .logo {
@@ -1310,7 +1339,9 @@ a {
 
 }
 
-/* ================= PROJECTS SECTION ================= */
+/* ================================
+   PROJECTS SECTION
+================================ */
 
 .projects {
     padding: 100px 8%;
@@ -1350,25 +1381,36 @@ a {
 }
 
 
-/* PROJECT GRID */
+/* ================================
+   PROJECT GRID
+================================ */
 
 .projects-container {
     max-width: 1200px;
     margin: auto;
+
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
     gap: 35px;
 }
 
 
-/* PROJECT CARD */
+/* ================================
+   PROJECT CARD
+================================ */
 
 .project-card {
     background: #111;
     border: 1px solid #252525;
+
     border-radius: 18px;
     overflow: hidden;
+
     transition: 0.3s ease;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 .project-card:hover {
@@ -1377,21 +1419,28 @@ a {
 }
 
 
-/* PROJECT IMAGE */
+/* ================================
+   PROJECT IMAGE
+================================ */
 
 .project-image {
     position: relative;
+
     width: 100%;
     height: 330px;
+
     overflow: hidden;
+
     background: #151515;
 }
 
 .project-image img {
     width: 100%;
     height: 100%;
+
     object-fit: cover;
     display: block;
+
     transition: 0.4s ease;
 }
 
@@ -1400,16 +1449,23 @@ a {
 }
 
 
-/* IMAGE OVERLAY */
+/* ================================
+   IMAGE OVERLAY
+================================ */
 
 .project-overlay {
     position: absolute;
+
     inset: 0;
+
     background: rgba(0, 0, 0, 0.55);
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     opacity: 0;
+
     transition: 0.3s ease;
 }
 
@@ -1417,30 +1473,54 @@ a {
     opacity: 1;
 }
 
-.project-link {
+
+/* ================================
+   IMAGE VIEW BUTTON
+================================ */
+
+.project-overlay .project-view {
     width: 55px;
     height: 55px;
+
     border-radius: 50%;
+
     background: #ff7a00;
     color: #000;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     text-decoration: none;
+
     font-size: 18px;
+
+    gap: 0;
+
+    transition: 0.3s ease;
+}
+
+.project-overlay .project-view:hover {
+    transform: scale(1.1);
+    gap: 0;
 }
 
 
-/* PROJECT CONTENT */
+/* ================================
+   PROJECT CONTENT
+================================ */
 
 .project-content {
     padding: 30px;
+    min-width: 0;
 }
 
 .project-top {
     display: flex;
+
     justify-content: space-between;
     align-items: center;
+
     margin-bottom: 15px;
 }
 
@@ -1456,88 +1536,78 @@ a {
 
 .project-content h3 {
     color: #fff;
+
     font-size: 28px;
+
     margin-bottom: 12px;
 }
 
 .project-content p {
     color: #999;
+
     line-height: 1.7;
+
     margin-bottom: 20px;
 }
 
 
-/* TECHNOLOGIES */
+/* ================================
+   TECHNOLOGIES
+================================ */
 
 .project-tech {
     display: flex;
+
     gap: 10px;
+
     flex-wrap: wrap;
+
     margin-bottom: 25px;
 }
 
 .project-tech span {
     padding: 7px 12px;
+
     background: #1c1c1c;
+
     border: 1px solid #333;
+
     border-radius: 20px;
+
     color: #ccc;
+
     font-size: 12px;
 }
 
 
-/* VIEW PROJECT */
+/* ================================
+   VIEW PROJECT LINK
+================================ */
 
-.project-view {
+.project-content .project-view {
     display: inline-flex;
+
     align-items: center;
+
     gap: 10px;
+
     color: #ff7a00;
+
     text-decoration: none;
+
     font-weight: 600;
+
     transition: 0.3s ease;
 }
 
-.project-view:hover {
+.project-content .project-view:hover {
     gap: 15px;
 }
 
 
-/* COMING SOON */
-
-.project-coming {
-    min-height: 500px;
-}
-
-.coming-soon {
-    height: 330px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-    background: #101010;
-    color: #666;
-}
-
-.coming-soon i {
-    width: 60px;
-    height: 60px;
-    border: 1px solid #333;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #ff7a00;
-    font-size: 22px;
-}
-
-.coming-soon span {
-    font-size: 14px;
-}
-
-
-/* MOBILE */
+/* ================================
+   MOBILE
+================================ */
 
 @media (max-width: 768px) {
 
@@ -1545,12 +1615,21 @@ a {
         padding: 70px 5%;
     }
 
+    .section-heading {
+        margin-bottom: 40px;
+    }
+
     .section-heading h2 {
         font-size: 42px;
     }
 
+    .section-heading p {
+        font-size: 15px;
+    }
+
     .projects-container {
         grid-template-columns: 1fr;
+        gap: 25px;
     }
 
     .project-image {
@@ -1561,47 +1640,42 @@ a {
         padding: 22px;
     }
 
+    .project-content h3 {
+        font-size: 24px;
+    }
+
 }
+
 
 /* ================================
-   UPCOMING PROJECT
+   SMALL MOBILE
 ================================ */
 
-.project-coming {
-    position: relative;
-    overflow: hidden;
-}
+@media (max-width: 400px) {
 
-.project-placeholder {
-    min-height: 240px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg, #111, #1a1a1a);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-}
+    .projects {
+        padding: 60px 4%;
+    }
 
-.project-placeholder span {
-    font-size: 5rem;
-    font-weight: 800;
-    color: rgba(255, 255, 255, 0.08);
-}
+    .section-heading h2 {
+        font-size: 36px;
+    }
 
-.project-disabled {
-    display: inline-flex;
-    align-items: center;
-    margin-top: 1rem;
-    padding: 0.7rem 1.2rem;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 8px;
-    color: #888;
-    cursor: default;
-}
+    .project-image {
+        height: 220px;
+    }
 
-.project-coming:hover .project-placeholder span {
-    transform: scale(1.05);
-    transition: 0.3s ease;
-} 
+    .project-content {
+        padding: 20px;
+    }
+
+    .project-top {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+
+}
 
 /* ================================
    CONTACT SECTION
@@ -1649,6 +1723,13 @@ a {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 35px;
+}
+
+.contact-content > *,
+.about > *,
+.hero > *,
+.skills-grid > * {
+    min-width: 0;
 }
 
 .contact-info,
